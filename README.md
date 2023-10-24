@@ -28,3 +28,30 @@ Because both BRC-20 and TAP tokens don't have a way to tell if a token is "curse
 Before a certain date when they stop supporting "cursed" tokens, you can't use a dash at the beginning of the code for any function in their system. But once they stop supporting these cursed tokens, you can use dashes at the start of the codes for functions.
 
 If the system you're using can't handle cursed tokens, they need to add a check to make sure tokens that come from these cursed tokens (ones with a code that starts with a dash) are not included in their system. 
+
+# Internal:
+
+The "token-send" is a new feature that allows you to send lots of different tokens to many people all at once. Here's how it works:
+
+You start by telling your Bitcoin address that you want to use "token-send" to send tokens.
+
+After your Bitcoin transaction is confirmed, you have to tell your address again to make sure everything is right (this is called "tapping").
+
+Your Bitcoin address must have enough tokens for the amounts you want to send.
+
+Only if you "tap" the "token-send" feature, it will actually send the tokens.
+
+The addresses of the people who will get the tokens need to be real Bitcoin addresses, without extra spaces, and those that start with "bc1" need to be in lowercase.
+
+When you first set up "token-send," everything you write, like amounts and addresses, must be correct.
+
+When you "tap" it, the system will check that the sends are valid and make sure there are enough tokens and the data is right.
+
+Every successful send will take the tokens from your balance and give them to the recipients.
+
+"Token-send" only works with the available balance, not the total balance (available balance = total balance - transferable).
+
+There's no difference between "cursed" and "non-cursed" tokens in the "items" attribute. If a token is "cursed," you have to use a dash in front of its code to work with it, unlike how you use "token-send" 
+functions.
+
+This is so you can mix "cursed" and "non-cursed" tokens in the same transaction.
