@@ -50,6 +50,30 @@ functions.
 
 This is so you can mix "cursed" and "non-cursed" tokens in the same transaction.
 
+#### Example
+
+The below example will send 1000 tap tokens to each address. Tokens and amounts can be mixed.
+There is no restriction on the amount of items (receivers).
+
+```javascript
+{
+  "p" : "tap",
+  "op" : "token-send",
+  "items" : [
+     {
+      "tick": "-tap",
+      "amt": "10000",
+      "address" : "bc1p9lpne8pnzq87dpygtqdd9vd3w28fknwwgv362xff9zv4ewxg6was504w20"
+     },
+     {
+      "tick": "tap",
+      "amt": "10000",
+      "address" : "bc1p063utyzvjuhkn0g06l5xq6e9nv6p4kjh5yxrwsr94de5zfhrj7csns0aj4"
+     }
+  ]
+}
+```
+
 ### `Token Trade`
 
 The "token-trade" function is a set of tools for trading tokens using written instructions. Here's how it works:
