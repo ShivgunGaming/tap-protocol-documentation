@@ -21,3 +21,8 @@ This part is for users and has some cool features. You can "stake" your tokens, 
 
 Because both BRC-20 and TAP tokens don't have a way to tell if a token is "cursed" or not, some systems need to check for negative numbers to separate cursed tokens from normal ones. 
 
+# External:
+
+Before a certain date when they stop supporting "cursed" tokens, you can't use a dash at the beginning of the code for any function in their system. But once they stop supporting these cursed tokens, you can use dashes at the start of the codes for functions.
+
+If the system you're using can't handle cursed tokens, they need to add a check to make sure tokens that come from these cursed tokens (ones with a code that starts with a dash) are not included in their system. 
