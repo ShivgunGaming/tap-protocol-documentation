@@ -110,14 +110,25 @@ To inscribe a trade, a seller has to inscribe a text inscription in the followin
 When someone creates a trade request, it becomes active and can be fulfilled under these conditions:
 
 ➼ All the information in the trade request is necessary.
+
 ➼ The "Side" attribute set to 0 means it's a trade request made by a seller.
+
 ➼ The person selling must have the tokens they're offering at the time the trade is completed by a buyer.
+
 ➼ The number of tokens they're offering should be taken from the available balance, not the total balance (available balance = total balance - tokens that are already being transferred).
+
 ➼ The tokens listed in the "accept" attribute are the ones the seller is willing to receive in exchange for the trade.
+
 ➼ If the buyer uses any of these accepted tokens, the trade is considered complete.
+
 ➼ The tokens listed in the "accept" attribute must be available at the time the trade is fulfilled by a buyer.
+
 ➼ The "valid" attribute block must be in the future or at the current block (inclusive). If the current block is past the "valid" block, the trade is invalid and won't be listed.
+
 ➼ If the tokens being offered are "cursed," the trade request must also be marked as "cursed."
+
 ➼ The tickers within the "accept" attribute must be unique. If there are multiple instances of the same ticker, only the first one will be listed.
+
 ➼ If any "cursed" tokens are listed in the "accept" attribute, they must have a dash "-" in front of the ticker. This is to allow trading of both "cursed" and non-"cursed" tokens in the same trade.
+
 ➼ After creating the trade request, the sellers need to send the request to themselves to confirm it (tapping).
