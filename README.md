@@ -189,3 +189,105 @@ Create and tap (confirm) a special function like this:
 ➼ Once a trade has been successfully canceled, no more trades can happen related to that trade request.
 
 ➼ After you've created this cancellation request, you should send it to yourself for confirmation (tapping).
+
+### `Fill A Trade`
+
+
+To complete a trade that's valid and open for filling, you can use a "token-trade" function like this:
+
+```javascript
+{
+  "p": "tap",
+  "op": "token-trade",
+  "side": "1",
+  "trade": "<inscription id>",
+  "tick": "based",
+  "amt": "0.2",
+  "fee_rcv": "<fee receiver address>"
+}
+```
+
+Here's what each part means:
+
+➼ Set "side" to 1 to indicate that you are the buyer in this trade.
+
+➼ "trade" should match the unique ID of the original trade request you want to complete (not a number).
+
+➼ "tick" and "amt" should match exactly one of the tokens listed in the original trade request.
+
+➼ You must have the specified token and the exact amount, plus an additional 0.3% for trading fees if the "fee_rcv" attribute is set.
+
+➼ If "fee_rcv" is set, it must be a valid Bitcoin address.
+
+➼ If "fee_rcv" starts with "bc1," it must be trimmed and in lowercase.
+
+➼ If the token in the "tick" attribute is a "cursed" one, you should also mark your trade as "cursed."
+
+➼ If "cursed" support ends for new trades, the "tick" attribute must reference "cursed" tokens with a leading dash.
+
+➼ After creating this trade request, you should send it to yourself for confirmation (tapping).
+
+➼ If the current block upon tapping is later than the block specified in the "valid" attribute of the original trade request, the filling will fail.
+
+➼ If all these conditions are met, the tokens and their exact amounts will be exchanged, and the trading fees will be paid to the fee receiver. Keep in mind that trading fees are only applied if they can be calculated as 0.3% of the transaction amount. If not, there may be no fees.
+
+➼ For the trade to be considered successful, all the conditions should be met, and the balances of the parties involved should be adjusted correctly.
+
+### `Token Auth`
+
+The "token-auth" function in TAP is a way for third parties or authorities to create special signed instructions. These instructions can be used by anyone to send specific tokens to certain recipients. This system allows for custom rules about how tokens should be distributed, without TAP needing to understand all the details of these custom rules.
+
+It's like TAP is a protocol that doesn't need to know the specifics of how the token distribution works because it relies on these signed instructions. Unlike some other systems, like zk-rollups, TAP's "token-auth" doesn't require special intermediaries or complex setups. It just uses signatures on messages.
+
+You can even use "token-auth" to connect with zk-rollup systems, which adds an extra layer of security and reliability.
+
+Importantly, "token-auth" doesn't rely on tricky technical tricks or data manipulation. All the operations are clearly defined and visible, making it easy for anyone to verify what's happening. This is important for transparency and trust.
+
+This feature can be used for various purposes, like turning points into tokens in games, creating bridges between different token systems, managing staking and reward programs, and building cross-chain marketplaces, among other things.
+
+### `Create A Authority`
+
+To create an authority in TAP, which is a way for someone to have control over specific tokens, you need to follow these steps:
+
+Send a special "token-auth" instruction and confirm it by sending it to yourself (tapping). This should be done from an address that already holds the tokens you want to authorize.
+
+Manually creating the code for "token-auth" isn't recommended because it involves message signatures. Instead, you can use the provided example script to help generate these signed token authorizations. It uses a technology called secp256k1 signatures for this purpose.
+
+Here's an example of what a "token-auth" instruction might look like:
+
+```javascript
+{
+   "p":"tap",
+   "op":"token-auth",
+   "sig":{
+      "v":"0",
+      "r":"51143521410606380758535576062355234772504706283689533465002520447203156100709",
+      "s":"23524754809729078525228087002160468580495709275023865450917881139756565577560"
+   },
+   "hash":"0f30c22be2f46e819538ca1281aadb82d3928cae5a699cade80013c5b14871e4",
+   "salt":"0.25991027744263695",
+   "auth":[
+      "gib"
+   ]
+}
+```
+
+➼ The "auth" attribute should contain an array of specific TAP tokens that this authority should be in control of.
+
+➼ If the "auth" array is empty, it means the authority will have control over all tokens owned by that account.
+
+➼ Once the "token-auth" instruction is indexed, it will be verified against the signature ("sig"), the "hash" attribute, and the public key.
+
+➼ The public key is retrieved by using the "hash."
+
+➼ To ensure there are no collisions with other "hash" values, a custom "salt" value is provided by the authority.
+
+➼ To verify, the "auth" array must be turned into a JSON string and hashed using SHA-256 along with the "salt" (sha256(auth + salt)).
+
+➼ The "hash" must be unique and can only be used once in the entire TAP system.
+
+➼ All tokens listed in "auth" must be deployed at the time of creating this "token-auth" (unless the "auth" array is empty).
+
+➼ The authority address doesn't need to own the authorized tokens at the time of creating the "token-auth," but it's a good practice for the authority to own them when it's time to use them.
+
+➼ If all authorized tokens are deployed, or if the "auth" array is empty, and the hashed signature is valid and the "hash" has never been used before, the "token-auth" instruction will be indexed after tapping it (sending it to "yourself").
