@@ -1,4 +1,4 @@
-# TAP Protocol Documentation
+# TAP Protocol
 Documentation about TAP protocol
 
 ![tap](https://github.com/ShivgunGaming/tap-protocol/assets/102505925/5ff24f19-05db-4138-b36d-9714622c5d67)
