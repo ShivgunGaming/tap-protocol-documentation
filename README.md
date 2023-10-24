@@ -121,8 +121,8 @@ To inscribe a trade, a seller has to inscribe a text inscription in the followin
   "p" : "tap",
   "op" : "token-trade",
   "side" : "0",
-  "tick" : "tap",
-  "amt" : "1",
+  "tick" : "shiba",
+  "amt" : "100000000",
   "accept" : [
     {
       "tick" : "based",
