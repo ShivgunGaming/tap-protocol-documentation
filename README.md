@@ -84,7 +84,7 @@ When someone wants to buy the tokens you're offering, they can fulfill your trad
 
 To inscribe a trade, a seller has to inscribe a text inscription in the following format:
 
-#### Creating a Trade
+### `Creating a Trade`
 
 ```javascript
 {
@@ -132,6 +132,8 @@ When someone creates a trade request, it becomes active and can be fulfilled und
 ➼ If any "cursed" tokens are listed in the "accept" attribute, they must have a dash "-" in front of the ticker. This is to allow trading of both "cursed" and non-"cursed" tokens in the same trade.
 
 ➼ After creating the trade request, the sellers need to send the request to themselves to confirm it (tapping).
+
+### `Cancel A Trade`
 
 To cancel a trade that's still active and hasn't expired, you need to do the following:
 
