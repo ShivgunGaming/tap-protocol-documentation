@@ -35,19 +35,11 @@ If the system you're using can't handle cursed tokens, they need to add a check 
 
 The "token-send" is a new feature that allows you to send lots of different tokens to many people all at once. Here's how it works:
 
-You start by telling your Bitcoin address that you want to use "token-send" to send tokens.
+You start by telling your Bitcoin address that you want to use "token-send" to send tokens. After your Bitcoin transaction is confirmed, you have to tell your address again to make sure everything is right (this is called "tapping").
 
-After your Bitcoin transaction is confirmed, you have to tell your address again to make sure everything is right (this is called "tapping").
+Your Bitcoin address must have enough tokens for the amounts you want to send. Only if you "tap" the "token-send" feature, it will actually send the tokens. The addresses of the people who will get the tokens need to be real Bitcoin addresses, without extra spaces, and those that start with "bc1" need to be in lowercase.
 
-Your Bitcoin address must have enough tokens for the amounts you want to send.
-
-Only if you "tap" the "token-send" feature, it will actually send the tokens.
-
-The addresses of the people who will get the tokens need to be real Bitcoin addresses, without extra spaces, and those that start with "bc1" need to be in lowercase.
-
-When you first set up "token-send," everything you write, like amounts and addresses, must be correct.
-
-When you "tap" it, the system will check that the sends are valid and make sure there are enough tokens and the data is right.
+When you first set up "token-send," everything you write, like amounts and addresses, must be correct. When you "tap" it, the system will check that the sends are valid and make sure there are enough tokens and the data is right.
 
 Every successful send will take the tokens from your balance and give them to the recipients.
 
@@ -57,3 +49,11 @@ There's no difference between "cursed" and "non-cursed" tokens in the "items" at
 functions.
 
 This is so you can mix "cursed" and "non-cursed" tokens in the same transaction.
+
+### `Token Trade`
+
+The "token-trade" function is a set of tools for trading tokens using written instructions. Here's how it works:
+
+If you want to sell tokens, you create a trade request by writing down the details of what you're selling. This trade request is then stored in a collection, and it can be seen by anyone looking to buy tokens. This request is available for a certain number of blocks.
+
+When someone wants to buy the tokens you're offering, they can fulfill your trade request. If they do, an optional fee receiver can be added. This person will get a 0.3% fee in tokens for each trade that gets completed. The buyer pays this fee in addition to the cost of the tokens they're buying. These fees help the people or services that manage the trade requests and the marketplace to make some money. Buyers find this system convenient because it guides them through the process, and it benefits the services involved.
