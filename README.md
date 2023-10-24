@@ -31,6 +31,8 @@ If the system you're using can't handle cursed tokens, they need to add a check 
 
 # Internal:
 
+### `Token Send`
+
 The "token-send" is a new feature that allows you to send lots of different tokens to many people all at once. Here's how it works:
 
 You start by telling your Bitcoin address that you want to use "token-send" to send tokens.
