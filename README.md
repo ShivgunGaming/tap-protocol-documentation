@@ -1,6 +1,8 @@
 # TAP Protocol
 Documentation about TAP protocol
 
+![tap](https://github.com/ShivgunGaming/tap-protocol/assets/102505925/5ff24f19-05db-4138-b36d-9714622c5d67)
+
 # Intro
 
 TAP is a system that makes it easy for people to use and create crypto. It's designed to be simple and doesn't rely on complex technology or L2s. Instead, it uses a straightforward method called tapping to make sure transactions are secure.
