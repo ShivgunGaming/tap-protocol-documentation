@@ -147,3 +147,15 @@ Create and tap (confirm) a special function like this:
   "trade": "<inscription id>"
 }
 ```
+
+➼ You must fill in all the details as shown in the example above.
+
+➼ Setting "side" to 0 indicates that this is a trade cancellation request made by the seller.
+
+➼ The "trade" attribute should contain the unique inscription ID (not a number) of the trade you want to cancel.
+
+➼ The trade will only be canceled if the trade you're referring to is owned by the same wallet address that's trying to cancel it.
+
+➼ Once a trade has been successfully canceled, no more trades can happen related to that trade request.
+
+➼ After you've created this cancellation request, you should send it to yourself for confirmation (tapping).
