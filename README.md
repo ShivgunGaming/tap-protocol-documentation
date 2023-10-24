@@ -29,6 +29,36 @@ Before a certain date when they stop supporting "cursed" tokens, you can't use a
 
 If the system you're using can't handle cursed tokens, they need to add a check to make sure tokens that come from these cursed tokens (ones with a code that starts with a dash) are not included in their system. 
 
+#### Examples
+
+```javascript
+{ 
+  "p": "tap",
+  "op": "token-deploy",
+  "tick": "tap",
+  "max": "21000000",
+  "lim": "1000"
+}
+```
+
+```javascript
+{ 
+  "p": "tap",
+  "op": "token-mint",
+  "tick": "tap",
+  "amt": "1000"
+}
+```
+
+```javascript
+{ 
+  "p": "tap",
+  "op": "token-transfer",
+  "tick": "tap",
+  "amt": "100"
+}
+```
+
 # Internal:
 
 ### `Token Send`
