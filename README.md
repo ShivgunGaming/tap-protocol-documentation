@@ -116,6 +116,8 @@ To inscribe a trade, a seller has to inscribe a text inscription in the followin
 
 ### `Creating a Trade`
 
+Mattyverse's Example!
+
 ```javascript
 {
   "p" : "tap",
