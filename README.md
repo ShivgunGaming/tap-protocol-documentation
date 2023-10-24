@@ -125,12 +125,8 @@ To inscribe a trade, a seller has to inscribe a text inscription in the followin
   "amt" : "1",
   "accept" : [
     {
-      "tick" : "buidl",
-      "amt" : "0.1"
-    },
-    {
       "tick" : "based",
-      "amt" : "0.2"
+      "amt" : "1"
     }
   ],
   "valid" : "900000"
