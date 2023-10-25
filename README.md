@@ -346,6 +346,29 @@ In simple terms, creating a redeem means that someone trusted has given the gree
 }
 ```
 
+➼ The "redeem" attribute in the instruction must contain specific information:
+
+➼ "items": A list of tokens and the amounts to be claimed.
+➼ "auth": The ID of the authority that authorized these tokens.
+➼ "data": Additional information if needed.
+➼ When this instruction is processed (indexed), it's checked for validity.
+
+➼ The signature ("sig") is verified to ensure it's legitimate.
+➼ The "hash" attribute is used to check the authenticity of the instruction.
+➼ The public key is derived from the "hash."
+➼ To prevent any potential issues, the authority includes a "salt" value, which is like a secret code.
+
+➼ The "auth" information is converted into a unique code by combining it with the "salt" and using a specific hashing method (SHA-256).
+
+➼ The "hash" must be unique and not used elsewhere in the system.
+
+➼ The authority's public key, derived from the "hash," is compared to the public key in the redeem instruction to ensure they match.
+
+➼ The original authority instruction must still be valid and not canceled.
+
+➼ All the tokens listed in the "redeem" must also be specified in the original authority instruction, ensuring consistency.
+
+➼ If all these conditions are met, the tokens specified in the "redeem" are sent to the recipient's address, following the rules of TAP's "token-send" function. No additional confirmation (tapping) is required because this is a pre-approved and signed transaction that can be initiated by anyone who has the redeem instruction.
 
 
 ### `Cancel an authority`
