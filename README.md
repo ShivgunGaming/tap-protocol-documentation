@@ -320,3 +320,28 @@ All the tokens listed in the redeem instruction should also be present in the or
 If all these conditions are met, the tokens mentioned in the redeem instruction will be sent to the recipient's address just like TAP's "token-send" function. No additional confirmation (tapping) is required because this is a pre-approved and signed transaction that can be initiated by anyone who has the redeem instruction.
 
 In simple terms, creating a redeem means that someone trusted has given the green light for you to claim certain tokens, and you can do so by following the provided instructions. It's a secure and transparent process.
+
+```javascript
+{
+   "p":"tap",
+   "op":"token-auth",
+   "sig":{
+      "v":"1",
+      "r":"113472523327934685528808901641630457916054343054143422440331961430719594721038",
+      "s":"21393407019197854961723689634443789868582208930187383447036700552814535514199"
+   },
+   "hash":"82e2b0d098dcdab820ff866b011250af8841a6b59cedd7164bb94b63d2598de9",
+   "salt":"0.46074583388095514",
+   "redeem":{
+      "items":[
+         {
+            "tick":"gib",
+            "amt":"546",
+            "address":"bc1p9lpne8pnzq87dpygtqdd9vd3w28fknwwgv362xff9zv4ewxg6was504w20"
+         }
+      ],
+      "auth":"fd3664a56cf6d14b21504e5d83a3d4867ee256f06cbe3bddf2787d6a80a86078i0",
+      "data":""
+   }
+}
+```
