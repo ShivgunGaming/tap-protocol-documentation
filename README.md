@@ -352,10 +352,13 @@ In simple terms, creating a redeem means that someone trusted has given the gree
 
 To cancel a "token-auth", the authority must send an inscription like below to its associated address and tap.
 
+```javascript
 {
    "p":"tap",
    "op":"token-auth",
    "cancel" : "fd3664a56cf6d14b21504e5d83a3d4867ee256f06cbe3bddf2787d6a80a86078i0"
 }
+```
+
 "cancel" must point to an existing an non-cancelled "token-auth" of the authority.
 Once tapped, no further redeems may be executed on the inscribed "token-auth", indefinitely.
