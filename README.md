@@ -289,3 +289,34 @@ Here's an example of what a "token-auth" instruction might look like:
 ➼ The authority address doesn't need to own the authorized tokens at the time of creating the "token-auth," but it's a good practice for the authority to own them when it's time to use them.
 
 ➼ If all authorized tokens are deployed, or if the "auth" array is empty, and the hashed signature is valid and the "hash" has never been used before, the "token-auth" instruction will be indexed after tapping it (sending it to "yourself").
+
+### `Create A Redeem`
+
+Creating a redeem means making certain tokens available for people to claim. Here's how it works:
+
+Tokens that are ready to be claimed are authorized and signed by a trusted authority. This authority decides when and how these tokens can be claimed.
+
+The process of creating a redeem is typically controlled by the authority, and they issue a special instruction for it.
+
+It's not recommended for regular users to manually create these instructions because it requires complex message signatures. Instead, there are scripts available that can help generate these signed redeem instructions.
+
+A typical redeem instruction includes details like:
+
+A unique ID for the authority, indicating who's allowing the tokens to be claimed.
+A list of tokens and the amounts that can be claimed.
+The recipient's address where the claimed tokens should be sent.
+The authority signs this redeem instruction using a cryptographic method called secp256k1 signatures to make sure it's legitimate.
+
+This redeem instruction also contains a unique "hash" and a "salt" to ensure it's distinct and genuine, preventing any tampering or fraud.
+
+Once this redeem instruction is created, anyone can use it to claim the tokens. There's no need for additional confirmation because the authority has already verified it.
+
+To ensure everything is legitimate, the recipient's public key is checked to match the original authority's details.
+
+The original "auth" instruction that initially authorized these tokens must remain valid and not be canceled.
+
+All the tokens listed in the redeem instruction should also be present in the original "auth" instruction, ensuring everything is consistent.
+
+If all these conditions are met, the tokens mentioned in the redeem instruction will be sent to the recipient's address just like TAP's "token-send" function. No additional confirmation (tapping) is required because this is a pre-approved and signed transaction that can be initiated by anyone who has the redeem instruction.
+
+In simple terms, creating a redeem means that someone trusted has given the green light for you to claim certain tokens, and you can do so by following the provided instructions. It's a secure and transparent process.
